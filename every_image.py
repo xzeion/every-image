@@ -4,26 +4,39 @@ import sys
 import pygame as py
 from pygame.locals import *
 
+
+width = 10
+height = 10
+
+
 py.init()
 
 #set up the window
-DISPLAYSURF = py.display.set_mode((500,400),0,32)
+DISPLAYSURF = py.display.set_mode((width,height),0,32)
 py.display.set_caption('Drawing')
 
 #set up the colors
-BLACK = (0,0,0)
-WHITE = (255,255,255)
+B = (0,0,0)
+W = (255,255,255)
 
 #draw on the surface object
 DISPLAYSURF.fill(WHITE)
 
-pixObj = py.PixelArray(DISPLAYSURF)
-pixObj[480][380] = BLACK
-pixObj[482][382] = BLACK
-pixObj[484][384] = BLACK
-pixObj[486][386] = BLACK
-pixObj[488][388] = BLACK
-del pixObj
+
+def listSplitter()
+	for i in xrange(0, len(1), n):
+		yeild l[i:i+n]
+
+
+def posGird(width,pixList = [], *args):
+	pixObj = py.PixelArray(DISPLAYSURF)
+	pixObj[480][380] = BLACK
+	pixObj[482][382] = BLACK
+	pixObj[484][384] = BLACK
+	pixObj[486][386] = BLACK
+	pixObj[488][388] = BLACK
+	del pixObj
+
 
 #run the game loop
 while True:
