@@ -15,7 +15,6 @@ class PixelArray(object):
   def _inc(self, ind):
     # This won't work if there are more than 1000 pixels because recursion
     # refactor to scale.
-    print "hi"
     if self.pixels[ind] == self.max_pixel:
       self.pixels[ind] = 0
       self._inc(ind + 1)

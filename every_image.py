@@ -25,4 +25,7 @@ def loop_step():
 #run the game loop
 while True:
     loop_step()
+    if py.event.poll().type == QUIT:
+        py.quit()
+        sys.exit()
     py.display.update()
