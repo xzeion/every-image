@@ -1,5 +1,5 @@
 import pygame as py
-from itertools import flatten
+from itertools import chain
 
 class PixelArray(object):
   def __init__(self, width, height, multiplier, max_pixel):
@@ -34,7 +34,7 @@ class PixelArray(object):
     return [self._to_color(pix) for pix in self.n_times()]
 
   def n_times(self):
-    return flatten([[pix] * self.multiplier for pix in self.pixels])
+    return chain.from_iterable([[pix] * self.multiplier for pix in self.pixels])
 
   def square_colors(self):
     colors = self.colors()
