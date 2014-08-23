@@ -1,11 +1,13 @@
 import pygame as py
+from itertools import flatten
 
 class PixelArray(object):
-  def __init__(self, width, height, max_pixel):
-    self.width = width
-    self.height = height
+  def __init__(self, width, height, multiplier, max_pixel):
+    self.width = width * multiplier
+    self.height = height * multiplier
     self.pixels = [0] * width * height
     self.max_pixel = max_pixel
+    self.multiplier = multiplier
 
   def __str__(self):
     ascii = " .:+&"
@@ -29,7 +31,10 @@ class PixelArray(object):
     return (val, val, val)
 
   def colors(self):
-    return [self._to_color(pix) for pix in self.pixels]
+    return [self._to_color(pix) for pix in self.n_times()]
+
+  def n_times(self):
+    return flatten([[pix] * self.multiplier for pix in self.pixels])
 
   def square_colors(self):
     colors = self.colors()
