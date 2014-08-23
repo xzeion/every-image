@@ -10,33 +10,17 @@ height = 10
 
 
 py.init()
-
+array = PixelArray(10, 10, 3)
 #set up the window
 DISPLAYSURF = py.display.set_mode((width,height),0,32)
 py.display.set_caption('Drawing')
 
-#set up the colors
-B = (0,0,0)
-W = (255,255,255)
 
 #draw on the surface object
-DISPLAYSURF.fill(WHITE)
-
-
-def listSplitter()
-	for i in xrange(0, len(1), n):
-		yeild l[i:i+n]
-
-
-def posGird(width,pixList = [], *args):
-	pixObj = py.PixelArray(DISPLAYSURF)
-	pixObj[480][380] = BLACK
-	pixObj[482][382] = BLACK
-	pixObj[484][384] = BLACK
-	pixObj[486][386] = BLACK
-	pixObj[488][388] = BLACK
-	del pixObj
-
+def loop_step():
+  DISPLAYSURF.fill(WHITE)
+  array.paint(DISPLAYSURF)
+  array.inc()
 
 #run the game loop
 while True:

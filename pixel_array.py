@@ -1,4 +1,4 @@
-
+import pygame as py
 
 class PixelArray(object):
   def __init__(self, width, height, max_pixel):
@@ -24,14 +24,30 @@ class PixelArray(object):
   def inc(self):
     self._inc(0)
 
+  def _to_color(self, pix):
+    val = pix * (255 / self.max_pixel)
+    return (val, val, val)
 
+  def colors(self):
+    return [self._to_color(pix) for pix in self.pixels]
 
+  def square_colors(self):
+    colors = self.colors()
+    return [colors[i:i+self.width] for i in xrange(0, len(colors), self.width)]
+
+  def paint(self, surface):
+    pix_array = py.PixelArray(surface)
+    square = self.square_colors()
+    for x in range(self.width):
+      for y in range(self.height):
+        pix_array[x][y] = square[x][y]
+    del pix_array
 
 def test_array():
     array = PixelArray(3, 3, 3)
     for i in range(150):
       array.inc()
-      print array
+      print array.square_colors()
 
 if __name__ == '__main__':
   test_array()
