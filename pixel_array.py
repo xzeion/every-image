@@ -2,12 +2,12 @@ import pygame as py
 from itertools import chain
 
 class PixelArray(object):
-  def __init__(self, width, height, multiplier, max_pixel):
-    self.width = width * multiplier
-    self.height = height * multiplier
+  def __init__(self, width, height, max_pixel): # multiplier, max_pixel):
+    self.width = width # * multiplier
+    self.height = height # * multiplier
     self.pixels = [0] * width * height
     self.max_pixel = max_pixel
-    self.multiplier = multiplier
+    #self.multiplier = multiplier
 
   def __str__(self):
     ascii = " .:+&"
@@ -34,7 +34,7 @@ class PixelArray(object):
     return [self._to_color(pix) for pix in self.n_times()]
 
   def n_times(self):
-    return chain.from_iterable([[pix] * self.multiplier for pix in self.pixels])
+    return chain.from_iterable([[pix] for pix in self.pixels])
 
   def square_colors(self):
     colors = self.colors()
